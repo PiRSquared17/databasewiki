@@ -1,0 +1,98 @@
+@charset "utf-8"
+
+html,body,table,form,td,tr,p,div,ul,ol,li,h1 {
+  border: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+html {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  width: 98%;
+  height: 98%;
+}
+
+#actions {
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  background: #dddddd;
+  border: 1px solid darkgrey;
+}
+
+#actions a {
+  margin-left: 5px;
+}
+
+form {
+  height: 100%
+}
+
+form.new {
+  display: inline
+}
+
+form.execute {
+  display: inline
+}
+
+#fields {
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  background: #dddddd;
+  border: 1px solid darkgrey;
+}
+
+#fields div label.main {
+  font-weight: bold;
+  font-size: smaller;
+  color: grey;
+  width: 150px;
+  display: block;
+}
+
+#fields div span.main {
+  font-size: smaller;
+  color: grey;
+}
+
+#textcontent {
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  background: #dddddd;
+  border: 1px solid darkgrey;
+}
+
+#fields div input.main {
+  width: 50%;
+}
+
+#fields div textarea.main {
+  height: 5em;
+  width: 95%;
+  display: block;
+}
+
+#fields #textcontentEdit {
+  height: 25em;
+  width: 95%;
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  background: #dddddd;
+  border: 1px solid darkgrey;
+}
+
+#fields #textcontentEdit textarea {
+  width: 99%;
+  height: 100%;
+}

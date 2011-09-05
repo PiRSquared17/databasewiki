@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+  http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+  <servlet>
+    <servlet-name>DbwServlet</servlet-name>
+    <servlet-class>jp.mathes.databaseWiki.web.DbwServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>DavServlet</servlet-name>
+    <servlet-class>jp.mathes.databaseWiki.dav.DavServlet</servlet-class>
+    <init-param>
+      <param-name>cutoff.path</param-name>
+      <param-value>/dbw/_/dav</param-value>
+    </init-param>
+  </servlet>
+
+  <filter>
+    <filter-name>DbwDispatchFilter</filter-name>
+    <filter-class>jp.mathes.databaseWiki.web.DbwDispatchFilter</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>ForwardStaticDavFilter</filter-name>
+    <filter-class>jp.mathes.databaseWiki.web.ForwardStaticDavFilter</filter-class>
+  </filter>
+
+  <servlet-mapping>
+    <servlet-name>DbwServlet</servlet-name>
+    <url-pattern>/dbwservlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DavServlet</servlet-name>
+    <url-pattern>/_/dav/*</url-pattern>
+  </servlet-mapping>
+  
+  <filter-mapping>
+    <filter-name>ForwardStaticDavFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>DbwDispatchFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>

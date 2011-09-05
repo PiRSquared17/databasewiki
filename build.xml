@@ -1,0 +1,71 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="databaseWiki" default="build">
+  <path id="class.path">
+    <fileset dir="war/WEB-INF/lib">
+      <include name="*jar" />
+    </fileset>
+    <pathelement location="war/WEB-INF/classes" />
+  </path>
+
+  <taskdef 
+    name="yui-compressor" 
+    classname="net.noha.tools.ant.yuicompressor.tasks.YuiCompressorTask">
+    <classpath refid="class.path" />
+  </taskdef>
+
+  <property name="ivy.lib.dir" value="lib.ivy"/>
+
+  <target name="fetchdeps">
+    <ivy:retrieve />
+    <delete dir="war/WEB-INF/lib"/>
+    <mkdir dir="war/WEB-INF/lib"/>
+    <copy todir="war/WEB-INF/lib" overwrite="true">
+      <fileset dir="lib">
+        <include name="*.jar"/>
+      </fileset>
+      <fileset dir="lib.ivy">
+        <include name="*.jar"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="build">
+    <javac classpathref="class.path" srcdir="src/java" destdir="war/WEB-INF/classes" includeantruntime="false" />
+    <copy todir="war/WEB-INF/classes" overwrite="true">  
+      <fileset dir="src/java"   
+               excludes="**/*.java"/>  
+    </copy> 
+    <copy todir="war/WEB-INF" overwrite="true">
+      <fileset dir="src">
+        <include name="web.xml"/>
+      </fileset>
+    </copy>
+    <copy todir="war/images" overwrite="true">
+      <fileset dir="src/images">
+        <include name="favicon.ico"/>
+        <include name="view.png"/>
+      </fileset>
+    </copy>
+    <concat destfile="war/script/view.js" force="no">
+      <fileset dir="src/script" includes="jquery.min.js" />
+      <fileset dir="src/script" includes="jquery.dataTables.min.js" />
+      <fileset dir="src/script" includes="customJQueryView.js" />
+    </concat>
+    <concat destfile="war/script/edit.js" force="no">
+      <fileset dir="src/script" includes="jquery.min.js" />
+      <fileset dir="src/script" includes="jquery.date_input.min.js" />
+      <fileset dir="src/script" includes="customJQueryEdit.js" />
+    </concat>
+    <concat destfile="war/style/view.css" force="no">
+      <fileset dir="src/css" includes="dbw.css" />
+      <fileset dir="src/css" includes="table.css" />
+    </concat>
+    <concat destfile="war/style/edit.css" force="no">
+      <fileset dir="src/css" includes="dbw.css" />
+      <fileset dir="src/css" includes="date_input.css" />
+    </concat>
+    <yui-compressor warn="true" charset="UTF-8" fromdir="war" todir="war">
+      <include name="style/view.css" />
+      <include name="style/edit.css" />
+    </yui-compressor>
+  </target>
+</project>
