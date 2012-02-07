@@ -59,12 +59,17 @@
       <fileset dir="src/css" includes="dbw.css" />
       <fileset dir="src/css" includes="table.css" />
     </concat>
+    <concat destfile="war/style/view-print.css" force="no">
+      <fileset dir="src/css" includes="dbw-print.css" />
+      <fileset dir="src/css" includes="table.css" />
+    </concat>
     <concat destfile="war/style/edit.css" force="no">
       <fileset dir="src/css" includes="dbw.css" />
       <fileset dir="src/css" includes="date_input.css" />
     </concat>
     <yui-compressor warn="true" charset="UTF-8" fromdir="war" todir="war">
       <include name="style/view.css" />
+      <include name="style/view-print.css" />
       <include name="style/edit.css" />
     </yui-compressor>
   </target>

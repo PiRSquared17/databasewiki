@@ -335,7 +335,7 @@ public class PostgresBackend implements Backend {
 			}
 			sb.append("\"").append(field.getName()).append("\" = '");
 			sb.append(
-				field.getValue().toString().replace("\\", "\\\\").replace("'", "''"))
+				field.getValue().toString().replace("'", "''"))
 				.append("'");
 		}
 		sb.append(String.format(" where \"%s\" = '%s'", nameField, name));

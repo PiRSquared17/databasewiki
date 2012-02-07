@@ -5,7 +5,8 @@
 <head>
   <title>${title}</title>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
-  <link href="${context}/_/style/view-min.css" rel="stylesheet" type="text/css" />
+  <link href="${context}/_/style/view-min.css" rel="stylesheet" type="text/css" media="screen"/>
+  <link href="${context}/_/style/view-print-min.css" rel="stylesheet" type="text/css" media="print"/>
   <link rel="icon" href="${context}/_/images/favicon.ico" type="image/x-icon" />
 </head>
   <body>
