@@ -14,11 +14,6 @@ html {
   width: 100%;
 }
 
-body {
-  width: 98%;
-  height: 98%;
-}
-
 #actions {
   display: block;
   margin: 10px;
@@ -78,13 +73,11 @@ form.execute {
 
 #fields div textarea.main {
   height: 5em;
-  width: 95%;
   display: block;
 }
 
 #fields #textcontentEdit {
   height: 25em;
-  width: 95%;
   display: block;
   margin: 10px;
   padding: 5px;
@@ -137,12 +130,14 @@ form.execute {
 .dataTables_length {
   width: 40%;
   float: left;
+  margin-bottom: 5px;
 }
 
 .dataTables_filter {
   width: 50%;
   float: right;
   text-align: right;
+  margin-bottom: 5px;
 }
 
 .dataTables_info {

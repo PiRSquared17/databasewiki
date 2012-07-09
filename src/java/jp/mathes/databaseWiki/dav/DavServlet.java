@@ -12,7 +12,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-*/
+ */
 package jp.mathes.databaseWiki.dav;
 
 import java.io.IOException;
@@ -22,6 +22,8 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import jp.mathes.databaseWiki.web.DbwConfiguration;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -94,6 +96,8 @@ public class DavServlet implements Servlet, ResourceFactory {
 
 	@Override
 	public Resource getResource(final String host, final String path) {
+		DbwConfiguration.getInstance().davLog(String.format(
+			"Entering getResource for host '%s' and path '%s'.", host, path));
 		String realPath = path.replace(this.cutoffPath, "");
 		realPath = StringUtils.strip(realPath, "/");
 		String[] realPathSplit = StringUtils.split(realPath, "/");

@@ -104,14 +104,7 @@ public class PostgresBackend implements Backend {
 			throw new BackendException(String.format("Cannot write to log file %s.",
 				this.logFile.getAbsoluteFile()));
 		} finally {
-			try {
-				if (fw != null) {
-					fw.close();
-				}
-			} catch (IOException e) {
-				throw new BackendException(String.format("Cannot close log file %s.",
-					this.logFile.getAbsoluteFile()));
-			}
+			IOUtils.closeQuietly(fw);
 		}
 	}
 

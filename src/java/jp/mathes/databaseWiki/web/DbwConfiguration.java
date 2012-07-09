@@ -12,7 +12,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-*/
+ */
 package jp.mathes.databaseWiki.web;
 
 import java.io.File;
@@ -92,19 +92,20 @@ public class DbwConfiguration {
 	public List<Plugin> getPlugins() {
 		return this.plugins;
 	}
-	
+
 	public void davLog(String message) {
 		davLog(message, null);
 	}
-	
+
 	public void davLog(String message, Throwable e) {
 		if (this.davLogFile != null) {
 			try {
-				FileUtils.writeStringToFile(this.davLogFile, message);
-				FileUtils.writeStringToFile(this.davLogFile, "\n");
+				FileUtils.write(this.davLogFile, message, true);
+				FileUtils.write(this.davLogFile, "\n", true);
 				if (e != null) {
-  				FileUtils.writeStringToFile(this.davLogFile, ExceptionUtils.getStackTrace(e));
-  				FileUtils.writeStringToFile(this.davLogFile, "\n");
+					FileUtils.write(this.davLogFile, ExceptionUtils.getStackTrace(e),
+						true);
+					FileUtils.write(this.davLogFile, "\n", true);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
